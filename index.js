@@ -42,10 +42,17 @@ function handleProcess(){
             }else{
                 console.log(response.statusCode);
                 console.log(body);
-                if(response.statusCode!=200){
-                    throw new Error(`statusCode ${response.statusCode}`)
+                if(response.statusCode==200){
+                    sendHearthBeat();
+                }else{
+                    if(envMode=="poll"){
+                        console.log("retry in 5000ms")
+                        setTimeout(()=>{
+                            handleProcess();
+                        }, 5000)
+                    }
                 }
-                sendHearthBeat();
+                
             }
         })
     }else{
@@ -56,10 +63,16 @@ function handleProcess(){
             }else{
                 console.log(response.statusCode);
                 console.log(body);
-                if(response.statusCode!=200){
-                    throw new Error(`statusCode ${response.statusCode}`)
+                if(response.statusCode==200){
+                    sendHearthBeat();
+                }else{
+                    if(envMode=="poll"){
+                        console.log("retry in 5000ms")
+                        setTimeout(()=>{
+                            handleProcess();
+                        }, 5000)
+                    }
                 }
-                sendHearthBeat();
             }
         });
     }
