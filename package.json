@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build":"docker buildx build -f Dockerfile --platform=linux/amd64,linux/arm64 --push -t=chris5451/docker-http-request:3.0.0 ."
+    "build":"docker buildx build -f Dockerfile --platform=linux/amd64,linux/arm64 --push -t=chris5451/docker-http-request:3.1.0 ."
   },
   "repository": {
     "type": "git",
